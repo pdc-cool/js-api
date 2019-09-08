@@ -82,3 +82,38 @@ sub.attach(o2);
 
 sub.setState('心情不好了');
 
+// call的实现
+Function.prototype.call = function() {
+	console.log('call实现');
+}
+
+//apply的实现
+Function.prototype.apply = function() {
+	console.log('apply实现');
+}
+
+//instanceof的实现
+function instanceOf(leftValue, rightValue) {
+
+}
+
+//防抖的实现
+function debounce() {
+
+}
+
+//节流的实现
+function throttle() {
+
+}
+
+//深拷贝的实现
+function deepCopy() {
+
+}
+
+//浅拷贝的实现
+function shallowCopy() {
+	
+}
+
