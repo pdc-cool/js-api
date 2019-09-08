@@ -97,6 +97,11 @@ function instanceOf(leftValue, rightValue) {
 
 }
 
+//new的实现
+function _new() {
+	
+}
+
 //防抖的实现
 function debounce() {
 
@@ -114,6 +119,6 @@ function deepCopy() {
 
 //浅拷贝的实现
 function shallowCopy() {
-	
+
 }
 
