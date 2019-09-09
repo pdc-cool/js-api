@@ -92,19 +92,31 @@ Function.prototype.apply = function() {
 	console.log('apply实现');
 }
 
-//instanceof的实现
+//instanceof的实现:先将左右两边的值都转换为原型；然后比较不同就false，接着下一层比较，一直到leftValue.__proto__为null或者undefied
 function instanceOf(leftValue, rightValue) {
-
+	//1.先将左右两边的值都转换为原型
+	let prototype = rightValue.prototype;
+	leftValue = leftValue.__proto__;
+	while(true) {
+		//2.判断边界boundary问题
+		if(leftValue === null || leftValue === undefined) return false;
+		//3.判断当相等即可return true
+		if(prototype === leftValue) return true;
+		//4.不符合接着循环
+		leftValue = leftValue.__proto__;
+	}
 }
 
+
 //new的实现
-function _new(constructor) {
+function _new() {
 	// 创建一个对象
 	let target = {};
+	let [constructor, ...args] = [...arguments];
 	//连接到原型
 	target.__proto__ = constructor.prototype; 
 	//将this指向为创建的对象
-	let result = constructor.call(target);
+	let result = constructor.apply(target, args);
 	//如果constructor构造函数中return object类型的值，则返回return的内容;否则返回this
 	typeof(result) === 'object' ? result : target;
 }
