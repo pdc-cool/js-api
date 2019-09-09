@@ -146,14 +146,40 @@ function _new() {
 }
 
 //防抖的实现
-function debounce() {
-
+function debounce(fn, delay) {
+	let timeOut = null;
+	return function() {
+		if(timeOut !== null) {
+			clearTimeout(timeOut);
+			timeOut = setTimeout(fn, delay);
+		}
+	}
 }
 
 //节流的实现
-function throttle() {
-
+function throttle(fn, delay) {
+	let timer = null;
+	return function() {
+		let context = this;
+		let args = arguments;
+		if(!timer) {
+			timer = setTimeout(function() {
+				fn.apply(context, args);
+				timer = null;
+			}, delay)
+		}
+	}
 }
+
+//深拷贝的简单实现： JSON.parse(JSON.string(obj))
+// 缺陷：
+// 1.对象的属性值是函数时，无法拷贝。
+// 2.原型链上的属性无法拷贝
+// 3.不能正确的处理 Date 类型的数据
+// 4.不能处理 RegExp
+// 5.会忽略 symbol
+// 6.会忽略 undefined
+
 
 //深拷贝的实现
 function deepCopy() {
