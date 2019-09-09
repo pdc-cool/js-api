@@ -98,8 +98,15 @@ function instanceOf(leftValue, rightValue) {
 }
 
 //new的实现
-function _new() {
-	
+function _new(constructor) {
+	// 创建一个对象
+	let target = {};
+	//连接到原型
+	target.__proto__ = constructor.prototype; 
+	//将this指向为创建的对象
+	let result = constructor.call(target);
+	//如果constructor构造函数中return object类型的值，则返回return的内容;否则返回this
+	typeof(result) === 'object' ? result : target;
 }
 
 //防抖的实现
