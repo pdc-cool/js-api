@@ -149,10 +149,8 @@ function _new() {
 function debounce(fn, delay) {
 	let timeOut = null;
 	return function() {
-		if(timeOut !== null) {
-			clearTimeout(timeOut);
-			timeOut = setTimeout(fn, delay);
-		}
+		clearTimeout(timeOut);
+		timeOut = setTimeout(fn, delay);
 	}
 }
 
@@ -183,7 +181,7 @@ function throttle(fn, delay) {
 
 //深拷贝的实现
 function deepCopy() {
-
+	
 }
 
 //浅拷贝的实现
