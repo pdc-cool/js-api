@@ -83,17 +83,41 @@ sub.attach(o2);
 sub.setState('心情不好了');
 
 // call的实现
-Function.prototype.call = function() {
-	console.log('call实现');
+Function.prototype._call = function() {
+	//1.先处理参数问题
+	let [thisArg, ...args] = [...arguments];
+	//2.确定传入的this的值问题
+	thisArg = thisArg || window;
+	//3.this指向的是调用_call的函数,即把这个函数存储在thisArg的fn属性中
+	thisArg.fn = this;
+	//执行函数
+	let result = thisArg.fn(...args);
+	//thisArg上自定义的属性，要移除
+	delete thisArg.fn;
+	return result;
 }
 
+
 //apply的实现
-Function.prototype.apply = function() {
-	console.log('apply实现');
+Function.prototype._apply = function(thisArg, rest) {
+	let result;
+	//1.确定传入的this值的问题
+	thisArg = thisArg || window;
+	//2.this指向的是调用_apply的函数,即把这个函数存储在thisArg的fn属性中
+	thisArg.fn = this;
+	//3.判断rest的是否传值或者空值问题
+	if(!rest) {
+		//第二个参数为null/undefined
+		thisArg.fn();
+	} else {
+		thisArg.fn(...rest);
+	}
+	delete thisArg.fn;
+	return result;
 }
 
 //instanceof的实现:先将左右两边的值都转换为原型；然后比较不同就false，接着下一层比较，一直到leftValue.__proto__为null或者undefied
-function instanceOf(leftValue, rightValue) {
+function _instanceOf(leftValue, rightValue) {
 	//1.先将左右两边的值都转换为原型
 	let prototype = rightValue.prototype;
 	leftValue = leftValue.__proto__;
