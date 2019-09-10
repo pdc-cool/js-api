@@ -189,3 +189,16 @@ function shallowCopy() {
 
 }
 
+
+//js迭代器
+function makeIterator(array){
+    let nextIndex = 0;
+    return {
+       next: function(){
+           return nextIndex < array.length ?
+               { value: array[nextIndex++], done: false } :
+               { done: true };
+       }
+    };
+}
+
