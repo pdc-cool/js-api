@@ -44,6 +44,8 @@ let pubSub = {
 let data = [];
 
 
+
+
 // 观察者模式   被观察者：宝宝  观察者：爸爸&&妈妈
 class Subject {
 	constructor(name) {
