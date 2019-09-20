@@ -150,9 +150,11 @@ function _new() {
 //防抖的实现
 function debounce(fn, delay) {
 	let timeOut = null;
-	return function() {
-		clearTimeout(timeOut);
-		timeOut = setTimeout(fn, delay);
+	return function(...args) {
+		if(timeOut) clearTimeout(timeOut);
+		timeOut = setTimeout(() => {
+			fn.apply(this, args);
+		}, delay);
 	}
 }
 
