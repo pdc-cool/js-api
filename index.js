@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-//订阅发布者模式   订阅和发布没有关系
+//订阅发布者模式   订阅和发布没有直接的关系
 //1.构造函数的写法
 function Events() {
 	this.callbacks = [];
