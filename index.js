@@ -118,6 +118,15 @@ Function.prototype._apply = function(thisArg, rest) {
 	return result;
 }
 
+// bind的简易实现版
+Function.prototype._bind(context) {
+  let _this = this;
+  let args = Array.prototype.slice(arguments, 1);
+  return function() {
+    _this.apply(context, args);
+  }
+}
+
 //instanceof的实现:先将左右两边的值都转换为原型；然后比较不同就false，接着下一层比较，一直到leftValue.__proto__为null或者undefied
 function _instanceOf(leftValue, rightValue) {
 	//1.先将左右两边的值都转换为原型
