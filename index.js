@@ -119,7 +119,7 @@ Function.prototype._apply = function(thisArg, rest) {
 }
 
 // bind的简易实现版
-Function.prototype._bind(context) {
+Function.prototype._bind = function(context) {
   let _this = this;
   let args = Array.prototype.slice(arguments, 1);
   return function() {
