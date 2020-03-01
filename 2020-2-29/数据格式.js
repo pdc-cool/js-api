@@ -130,7 +130,7 @@ function readFile(file) {
 }
 
 // URL 对象：用于生成指向 File 对象或者 Blob 对象的 URL
-// 每次调用 URL.createObjectURL 方法，就会得到一个不一样的URL
+// 每次调用 URL.createObjectURL 方法，就会得到一个不一样的 URL
 // 这个 URL 存在时间等于网页存在时间，一旦网页刷新或卸载，这个 URL 就失效
 // 可以手动调用 URL.revokeObjectURL,使 URL 失效
 let object = window.URL.createObjectURL(blob)
