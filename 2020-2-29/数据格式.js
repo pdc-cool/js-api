@@ -25,7 +25,7 @@ let newBlob = oldBlob.slice(startingByte, endindByte)
 
 // 使用 XMLHttpRequest 对象将大文件分割上传
 function upload(blobOrFile) {
-  let xhr = new XMLHttpRequest()
+  let xhr = new XMLHttpRequest
   xhr.open('POST', '/serve', true)
   xhr.onload = function(e) {
     // ...
@@ -86,7 +86,7 @@ reader.readAsText(file, encoding)
 // Base64编码
 let file = document.getElementById('destination').files[0]
 if (file.type.indexOf('image') !== -1) {
-  let reader = new FileReader()
+  let reader = new FileReader
   reader.onload = function(e) {
     let dataURL = reader.reslut
   }
