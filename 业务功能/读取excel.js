@@ -26,7 +26,7 @@ reader.onload = function(evt) {
             }),
             buildings = [] // 存储获取到的数据
         let formTo = ''
-        // 遍历没张表格
+        // 遍历每张表格
         for(const sheet in workbook.Sheets) {
             if (workbook.Sheets.hasOwnProperty(sheet)) {
                 formTo = workbook.Sheets[sheet]['!ref']
