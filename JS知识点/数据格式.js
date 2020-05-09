@@ -1,5 +1,5 @@
 // 熟悉各种数据格式: DOMstring  ArrayBuffer  Blob File...
- 
+
 // 1.Blob 对象: 表示一段二进制数据
 // 生成 Blob 对象两种方法：使用 Blob 构造函数或者对现有 Blob 对象 slice() 切出一部分
 
