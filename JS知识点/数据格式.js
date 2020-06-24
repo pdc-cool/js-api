@@ -152,3 +152,29 @@ let info = document.createElement('span')
 info.innerHTML = files[i].name + ':' + files[i].size + 'bytes'
 
 document.querySelector('body').appendChild(info)
+
+// base64 -> Blob
+function dataURLtoBlob(dataurl) {
+  var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+  while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+  }
+  return new Blob([u8arr], { type: mime });
+}
+
+
+/**
+ * 数据格式 note
+ */
+
+ // 1.URL createObjectURL() 和 FileReader.readAsDataURL(file) 的对比: https://juejin.im/post/5d6dd5f2f265da03e168931b
+//  Blob URL只能由浏览器在内部生成。URL.createObjectURL()将创建一个特殊的Blob或File对象的引用，以后可以使用它来发布URL.revokeObjectURL()。这些URL只能在浏览器的单个实例中和同一个会话中（即页面/文档的生命周期）在本地使用。
+//  Blob URL / Object URL是一种伪协议，允许Blob和File对象用作图像，下载二进制数据链接等的URL源。
+
+// 例如，不能处理Image对象的原始字节数据，因为它不知道如何处理它。它需要例如图像（二进制数据）通过URL加载。这适用于任何需要URL作为源的东西。不用上传二进制数据，
+// 而是通过URL提供回来，最好使用额外的本地步骤来直接访问数据而无需通过服务器。对于编码为Base-64的字符串的Data-URI也是更好的选择。
+// Data-URI的问题是每个char在JavaScript中占用两个字节。最重要的是，由于Base-64编码增加了33％。Blob是纯粹的二进制字节数组，它不像Data-URI那样具有任何重要的开销，这使得它们处理速度越来越快。
+
+// 2.Blob Url And Data Url区别：https://github.com/chanshiyucx/blog/issues/70
+// Blob url只能在浏览器创建，需要将二进制数据封装为BLOB对象，然后使用它URL.createObjectURL()为其生成本地URL

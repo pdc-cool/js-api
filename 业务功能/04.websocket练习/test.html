@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 文档地址：https://juejin.im/post/5bcad1326fb9a05cda779d0b
+    function socketConnect(url) {
+        let ws = new WebSocket(url)
+        // 连接成功的回调
+        ws.onopen = function(e) {
+            console.log('连接成功', e)
+            ws.send("我开始发送数据楼！")
+        }
+        // 监听服务器返回的信息
+        ws.onmessage= e => {
+            console.log("服务器返回的数据", e.data)
+        }
+        return ws
+    }
+
+    let wsValue = socketConnect('ws://121.40.165.18:8800'); // websocket对象
+</script>
