@@ -11,10 +11,10 @@
 // 2.前端文件下载：使用 H5 a 标签的 download 属性
 
 // template
-<a id="downLoadExcel" :href="downLoadTemplateURL" :download="filename"></a>
+{/* <a id="downLoadExcel" :href="downLoadTemplateURL" :download="filename"></a> */}
 
 // js
-downLoadExcelTemplate() {
+function downLoadExcelTemplate() {
     const vm = this
     vm.downLoadTemplateURL = vm.apiHost + "downloadYourFileURL"
     vm.filename = "myTest.pdf"

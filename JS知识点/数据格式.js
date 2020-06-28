@@ -1,7 +1,10 @@
 // 熟悉各种数据格式: DOMstring  ArrayBuffer  Blob File...
 // Domstring:是一个UTF-16字符串。由于JavaScript已经使用了这样的字符串，所以DOMString 直接映射到 一个String。
 
-// 1.Blob 对象: 表示一段二进制数据
+// ArrayBuffer: ArrayBuffer 对象用来表示通用的、固定长度的原始二进制数据缓冲区。是一个字节数组，通常在其他语言中称为“byte array”
+// 你不能直接操作 ArrayBuffer 的内容，而是要通过类型数组对象或 DataView 对象来操作，它们会将缓冲区中的数据表示为特定的格式，并通过这些格式来读写缓冲区的内容。
+
+// 1.Blob 对象: 对象表示一个不可变、原始数据的类文件对象。Blob 表示的不一定是JavaScript原生格式的数据。File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。表示一段二进制数据
 // 生成 Blob 对象两种方法：使用 Blob 构造函数或者对现有 Blob 对象 slice() 切出一部分
 
 // Blob(blobParts[, options]) 
