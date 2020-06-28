@@ -1,4 +1,5 @@
 // 熟悉各种数据格式: DOMstring  ArrayBuffer  Blob File...
+// Domstring:是一个UTF-16字符串。由于JavaScript已经使用了这样的字符串，所以DOMString 直接映射到 一个String。
 
 // 1.Blob 对象: 表示一段二进制数据
 // 生成 Blob 对象两种方法：使用 Blob 构造函数或者对现有 Blob 对象 slice() 切出一部分
@@ -178,3 +179,5 @@ function dataURLtoBlob(dataurl) {
 
 // 2.Blob Url And Data Url区别：https://github.com/chanshiyucx/blog/issues/70
 // Blob url只能在浏览器创建，需要将二进制数据封装为BLOB对象，然后使用它URL.createObjectURL()为其生成本地URL
+
+// 3.ASCII、Unicode、UTF-8、UTF-16: https://stackoverflow.com/questions/2241348/what-is-unicode-utf-8-utf-16
