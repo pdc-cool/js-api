@@ -1,3 +1,4 @@
+// 珠峰架构的这种封装并不好 一般都是使用 axios 实例的形式来进行封装 可以参考掘金
 import axios from 'axios'
 import qs from 'qs'
 
