@@ -167,6 +167,30 @@ function dataURLtoBlob(dataurl) {
   return new Blob([u8arr], { type: mime });
 }
 
+// url -> Data-url
+// 思路:
+// 构造一个img元素，将url赋给img2. 给元素的内容赋值为你所想要copy的文本
+// 等待图片加载完成
+// 构造一个canvas元素
+// 将img元素画到canvas上
+// 通过canvas的api将url转化为base64
+function convertImgToBase64(url, callback) {
+  var canvas = document.createElement("CANVAS");
+  var ctx = canvas.getContext("2d");
+  var img = new Image();
+  img.crossOrigin = "Anonymous";
+  img.onload = function() {
+    var width = img.width;
+    var height = img.height;
+    canvas.width = width;
+    canvas.height = height;
+    ctx.drawImage(img, 0, 0, width, height, 0, 0, width, height);
+    var dataURL = canvas.toDataURL("image/png");
+    callback.call(this, dataURL);
+    canvas = null;
+  };
+  img.src = url;
+}
 
 /**
  * 数据格式 note
