@@ -3,7 +3,7 @@
  * @Descripttion: 优秀简介代码片段
  * @Date: 2020-12-26 11:01:55
  * @LastEditors: pengdongchu
- * @LastEditTime: 2020-12-28 12:31:06
+ * @LastEditTime: 2020-12-28 13:32:13
  */
 
 /* 统计字符串出现字母的次数 */
@@ -52,3 +52,6 @@ module.exports.install = function (Vue) {
  * doc: https://github.com/vuejs/vue-router/issues/1859
  */
 
+/**
+ * addRoutes 不能在已存在的路由下面添加子路由
+ */
