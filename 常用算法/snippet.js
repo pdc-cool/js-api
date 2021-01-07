@@ -3,7 +3,7 @@
  * @Descripttion: 优秀简介代码片段
  * @Date: 2020-12-26 11:01:55
  * @LastEditors: pengdongchu
- * @LastEditTime: 2020-12-28 13:32:13
+ * @LastEditTime: 2021-01-07 09:53:52
  */
 
 /* 统计字符串出现字母的次数 */
@@ -54,4 +54,26 @@ module.exports.install = function (Vue) {
 
 /**
  * addRoutes 不能在已存在的路由下面添加子路由
+ */
+
+/**
+ * 函数只调用一次
+ * once 函数保证了这个调用函数只在系统中调用一次
+ */
+function once (fn) {
+  // 利用闭包特性将 called 作为标志位
+  var called = false;
+  return function () {
+    // 调用过则不再调用
+    if (!called) {
+      called = true;
+      fn.apply(this, arguments);
+    }
+  }
+}
+
+/**
+ * 高阶组件：接收一个组件作为参数，返回一个新的组件
+ * 接收一个纯对象，并返回一个新的纯对象
+ * https://juejin.cn/post/6844903545607553032
  */
