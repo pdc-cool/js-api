@@ -3,7 +3,7 @@
  * @Descripttion: 优秀简介代码片段
  * @Date: 2020-12-26 11:01:55
  * @LastEditors: pengdongchu
- * @LastEditTime: 2021-01-13 12:25:31
+ * @LastEditTime: 2021-01-31 11:13:09
  */
 
 /* 统计字符串出现字母的次数 */
@@ -78,3 +78,12 @@ function once (fn) {
  * 接收一个纯对象，并返回一个新的纯对象
  * https://juejin.cn/post/6844903545607553032
  */
+
+ /**
+  * 交换值常用做法
+  */
+  let temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+
+  [arr[i], arr[j]] = [arr[j], arr[i]]
