@@ -1,17 +1,26 @@
+/*
+ * @Author: pengdongchu
+ * @Descripttion:
+ * @Date: 2021-01-31 11:15:18
+ * @LastEditors: pengdongchu
+ * @LastEditTime: 2021-02-01 13:26:05
+ */
 /**
  * 1.选择排序
  * 思路：
  * 1.遍历数组
- * 2.每次遍历找到最小值放到最前面
+ * 2.每次遍历找到最小值放到最前面（设置 minPos 变量记录位置）
  * 3.遍历结束，数组即从小到大排序
  * 链接：https://www.bilibili.com/video/BV1gz4y1S7jD?p=5&spm_id_from=pageDriver
  * 优化方案：
  * 1.每次遍历找到最小值和最大值，最小和最大交换位置，即减少一半遍历
  * 刷题记录：
  * 1.20210131 11:34
+ * 2.20210201 13:21
  */
 let arr = [3, 2, 8, 9, 0, 4, 7];
 
+// 20210131 11:34
 for (let i = 0; i < arr.length - 1; i++) {
   let minPos = i;
 
@@ -24,7 +33,28 @@ for (let i = 0; i < arr.length - 1; i++) {
   [arr[i], arr[minPos]] = [arr[minPos], arr[i]];
 }
 
-// console.log(arr);
+// 20210201 13:21
+for (let i = 0; i < arr.length -1 ; i++) {
+  let minPos = i;
+
+  for (let j = i + 1; j < arr.length; j++) {
+    // error: 应该根据 minPos 比较，而并不是前后元素
+    // if (arr[j] <= arr[j+1]) {
+    //   minPos = j;
+    // } else {
+    //   minPos = j+1;
+    // }
+
+    // true：每项与 minPos 比较，小于则更新 minPos，大于则忽视
+    if (arr[j] < arr[minPos]) {
+      minPos = j;
+    }
+  }
+  
+  [arr[minPos], arr[i]] = [arr[i], arr[minPos]];
+}
+
+console.log(arr);
 
 /**
  * 2.冒泡排序
@@ -57,6 +87,7 @@ for (let i = bubbleArr.length - 1; i >= 0; i--) {
  * 刷题记录：
  * 1.20210131 13:37
  * 优化方案：
+ * 1.临时变量记录标记项
  */
 let insertArr = [9, 3, 7, 4, 5, 0, 1];
 
